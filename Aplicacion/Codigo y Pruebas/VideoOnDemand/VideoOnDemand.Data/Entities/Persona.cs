@@ -18,6 +18,6 @@ namespace VideoOnDemand.Entities
 
         public bool? Status { get; set; }
 
-       //public Media Medias { get; set; }
+        public ICollection<Media> Medias { get; set; }
     }
 }

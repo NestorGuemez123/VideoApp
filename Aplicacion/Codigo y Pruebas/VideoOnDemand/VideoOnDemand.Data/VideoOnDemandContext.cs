@@ -19,11 +19,9 @@ namespace VideoOnDemand.Data
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Media> Medias { get; set; }
         public DbSet<Genero> Generos { get; set; }
-<<<<<<< HEAD
         public DbSet<Episodio> Episodios { get; set; }
-=======
+
         public DbSet<Persona> Personas { get; set; }
->>>>>>> 02eb57e0a065bf530386d813e9bcee404883b913
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -42,6 +40,7 @@ namespace VideoOnDemand.Data
             genero.Property(i => i.Descripcion).HasMaxLength(500).IsOptional();
 
             #endregion
+
             #region MapeoPersona
             var persona = modelBuilder.Entity<Persona>();
             persona.ToTable("Actores");
@@ -50,18 +49,12 @@ namespace VideoOnDemand.Data
             persona.Property(x => x.Descripcion).HasMaxLength(500).IsRequired();
             persona.Property(x => x.Status).IsOptional();
             #endregion
+
             #region MapeoMedia
             var media = modelBuilder.Entity<Media>();
-
-<<<<<<< HEAD
-            #region MapeoEpisodio
-            var episodio = modelBuilder.Entity<Episodio>();
-            #endregion
-=======
             media.HasKey(i => i.MediaId);
             media.Property(i => i.MediaId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             media.Property(i => i.Descripcion).HasMaxLength(500).IsOptional();
->>>>>>> 02eb57e0a065bf530386d813e9bcee404883b913
 
             media.HasMany<Genero>(g => g.Generos).WithMany(m => m.Medias).Map(gm =>
             {
@@ -70,7 +63,7 @@ namespace VideoOnDemand.Data
                 gm.ToTable("Media-Genero");
             });
 
-            
+
             media.HasMany<Persona>(a => a.Actores).WithMany(m => m.Medias).Map(am =>
             {
                 am.MapLeftKey("MediaId");
@@ -78,6 +71,13 @@ namespace VideoOnDemand.Data
                 am.ToTable("Media-Actor");
             });
             #endregion
+
+            #region MapeoEpisodio
+            var episodio = modelBuilder.Entity<Episodio>();
+
+            #endregion
+
+            
         }
     }
 }

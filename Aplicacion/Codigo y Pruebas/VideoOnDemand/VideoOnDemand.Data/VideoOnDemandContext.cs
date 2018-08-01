@@ -17,9 +17,9 @@ namespace VideoOnDemand.Data
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Media> Medias { get; set; }
         public DbSet<Genero> Generos { get; set; }
         public DbSet<Persona> Personas { get; set; }
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -32,6 +32,10 @@ namespace VideoOnDemand.Data
 
             #region MapeoGenero
             var genero = modelBuilder.Entity<Genero>();
+            genero.HasKey(i => i.GeneroId);
+            genero.Property(i => i.GeneroId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            genero.Property(i => i.Nombre).HasMaxLength(100).IsRequired();
+            genero.Property(i => i.Descripcion).HasMaxLength(500).IsOptional();
 
             #endregion
             #region MapeoPersona
@@ -41,6 +45,29 @@ namespace VideoOnDemand.Data
             persona.Property(x => x.Name).HasMaxLength(25).IsRequired();
             persona.Property(x => x.Descripcion).HasMaxLength(500).IsRequired();
             persona.Property(x => x.Status).IsOptional();
+
+            #region MapeoMedia
+            var media = modelBuilder.Entity<Media>();
+
+            media.HasKey(i => i.MediaId);
+            media.Property(i => i.MediaId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            media.Property(i => i.Descripcion).HasMaxLength(500).IsOptional();
+
+            media.HasMany<Genero>(g => g.Generos).WithMany(m => m.Medias).Map(gm =>
+            {
+                gm.MapLeftKey("MediaId");
+                gm.MapRightKey("GeneroId");
+                gm.ToTable("Media-Genero");
+            });
+
+            
+            media.HasMany<Persona>(a => a.Actores).WithMany(m => m.Medias).Map(am =>
+            {
+                am.MapLeftKey("MediaId");
+                am.MapRightKey("ActoresId");
+                am.ToTable("Media-Actor");
+            });
+>>>>>>> da97cd1453622b6c6a55f22f15555f3498bd1b33
             #endregion
 
         }

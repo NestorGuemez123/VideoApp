@@ -45,7 +45,7 @@ namespace VideoOnDemand.Data
             persona.Property(x => x.Name).HasMaxLength(25).IsRequired();
             persona.Property(x => x.Descripcion).HasMaxLength(500).IsRequired();
             persona.Property(x => x.Status).IsOptional();
-
+            #endregion
             #region MapeoMedia
             var media = modelBuilder.Entity<Media>();
 
@@ -67,9 +67,7 @@ namespace VideoOnDemand.Data
                 am.MapRightKey("ActoresId");
                 am.ToTable("Media-Actor");
             });
->>>>>>> da97cd1453622b6c6a55f22f15555f3498bd1b33
             #endregion
-
         }
     }
 }

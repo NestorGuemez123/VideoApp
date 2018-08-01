@@ -18,7 +18,7 @@ namespace VideoOnDemand.Data
 
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Genero> Generos { get; set; }
-
+        public DbSet<Episodio> Episodios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -34,6 +34,9 @@ namespace VideoOnDemand.Data
 
             #endregion
 
+            #region MapeoEpisodio
+            var episodio = modelBuilder.Entity<Episodio>();
+            #endregion
 
         }
     }

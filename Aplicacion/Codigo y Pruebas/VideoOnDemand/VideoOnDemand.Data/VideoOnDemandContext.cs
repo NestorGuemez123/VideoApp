@@ -17,6 +17,8 @@ namespace VideoOnDemand.Data
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Genero> Generos { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -27,7 +29,12 @@ namespace VideoOnDemand.Data
             usuarioEntity.Property(x => x.Nombre).HasMaxLength(200).IsRequired();
             usuarioEntity.Property(x => x.IdentityId).HasMaxLength(128).IsRequired();
 
-            
+            #region MapeoGenero
+            var genero = modelBuilder.Entity<Genero>();
+
+            #endregion
+
+
         }
     }
 }

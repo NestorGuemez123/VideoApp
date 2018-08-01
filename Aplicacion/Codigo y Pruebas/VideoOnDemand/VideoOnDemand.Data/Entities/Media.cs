@@ -15,7 +15,7 @@ namespace VideoOnDemand.Entities
         public DateTime? FechaRegistro { get; set; }
         public DateTime? FechaLanzamiento { get; set; }
         public bool Activo { get; set; }
-        public EEstatusMedia? Estatus { get; set; }
+
         public ICollection<Genero> Generos { get; set; }
         //public ICollection<Persona> Actores { get; set; }
     }

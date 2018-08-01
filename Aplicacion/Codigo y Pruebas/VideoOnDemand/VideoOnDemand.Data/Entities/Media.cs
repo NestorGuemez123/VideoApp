@@ -11,6 +11,12 @@ namespace VideoOnDemand.Entities
         public int? MediaId { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
+<<<<<<< HEAD
+=======
+        public int DuracionMin { get; set; }
+        public DateTime FechaRegistro { get; set; }
+        public DateTime FechaLanzamiento { get; set; }
+>>>>>>> 8ccc4eee3010995d95193345c6d49e2cfbb3d011
         public int? DuracionMin { get; set; }
         public DateTime? FechaRegistro { get; set; }
         public DateTime? FechaLanzamiento { get; set; }
@@ -18,6 +24,9 @@ namespace VideoOnDemand.Entities
 
         public ICollection<Genero> Generos { get; set; }
         //public ICollection<Persona> Actores { get; set; }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8ccc4eee3010995d95193345c6d49e2cfbb3d011
     }
 }

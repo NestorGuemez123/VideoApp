@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace VideoOnDemand.Entities
 {
-    class Movie 
+    class Movie : Media
     {
-        
+                
     }
 }

@@ -329,4 +329,12 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 Aplicacion/Codigo y Pruebas/VideoOnDemand/VideoOnDemand.Data/App.config
+<<<<<<< HEAD
 Aplicacion/Codigo y Pruebas/VideoOnDemand/VideoOnDemand.Web/VideoOnDemand.Web.csproj
+=======
+
+Aplicacion/Codigo y Pruebas/VideoOnDemand/VideoOnDemand.Web/Web.config
+
+Administracion/.~lock.Curso-MVC.pptx#
+
+>>>>>>> b3e004bc1a430afb65a981f7ba97e54e0d30a878

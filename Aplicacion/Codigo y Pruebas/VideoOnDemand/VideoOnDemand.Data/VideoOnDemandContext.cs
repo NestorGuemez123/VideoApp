@@ -18,6 +18,7 @@ namespace VideoOnDemand.Data
 
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Genero> Generos { get; set; }
+        public DbSet<Persona> Personas { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -33,7 +34,14 @@ namespace VideoOnDemand.Data
             var genero = modelBuilder.Entity<Genero>();
 
             #endregion
-
+            #region MapeoPersona
+            var persona = modelBuilder.Entity<Persona>();
+            persona.ToTable("Actores");
+            persona.HasKey(x => x.Id).Property(x => x.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            persona.Property(x => x.Name).HasMaxLength(25).IsRequired();
+            persona.Property(x => x.Descripcion).HasMaxLength(500).IsRequired();
+            persona.Property(x => x.Status).IsOptional();
+            #endregion
 
         }
     }
